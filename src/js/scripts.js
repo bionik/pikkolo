@@ -1,4 +1,4 @@
-//Handmade with love by http://esmes.fi
+//Handmade with love by @b10nik
 
 var App = function(options){
   'use strict';
