@@ -27,7 +27,7 @@ var App = function(options){
     $(window).scroll(a.handleScroll);
 
     var html = '';
-    log(window.data);
+
     $.each(window.data, function(i, image){
       html += a.renderImage(image);
     });
@@ -87,7 +87,6 @@ var App = function(options){
         contentType: false,
         enctype: 'multipart/form-data',
         success: function(data){
-          log(data);
           if(data && data.status && data.status == "OK"){
             if(typeof window.localStorage !== "undefined" && data.hash){
               window.localStorage.setItem('hash', data.hash);
