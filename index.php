@@ -4,7 +4,7 @@
 $config = array(
     'title' => 'Pikkolo',
     'description' => 'Photoblog',
-    'shareimage' => '', //If not set, site will use the first image
+    'shareimage' => '', //If not set, site will use the oldest image
     'directory' => 'photos',
     'thumb_directory' => 'thumbs',
     'thumb_width' => 2500,
