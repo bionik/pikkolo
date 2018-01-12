@@ -6,3 +6,5 @@ To upload images, add parameter ?upload to the url to show the upload form. Set 
 Install dependencies: npm install
 
 To build & watch changes in sourcefiles: gulp
+
+You need to build the project before it works!

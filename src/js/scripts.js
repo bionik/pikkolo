@@ -55,6 +55,8 @@ var App = function(options){
           $('#upload').show();
         }
       });
+    } else {
+      $('#upload').show();
     }
 
     $('[role="upload-close"]').on('click', function(){

@@ -142,9 +142,8 @@ $files = array();
 //Get images and sort them by modification time
 if($handle = opendir($config['directory'])) {
   while (false !== ($file = readdir($handle))) {
-    $filename = $config['directory'].'/'.$file;
-    if (substr($file, 0, 1) != "." && looksLikeImage($filename)) {
-      $files[filemtime($filename)] = $file;
+    if (substr($file, 0, 1) != "." && looksLikeImage($config['directory'].'/'.$file)) {
+      $files[filemtime($config['directory'].'/'.$file).'_'.$file] = $file;
     }
   }
   closedir($handle);
@@ -197,12 +196,11 @@ if((!isset($config['shareimage']) || $config['shareimage'] == '') && isset($data
   if($show_upload_form === true){
     echo '<form id="upload" style="display: none;">
       <div class="close" role="upload-close"></div>
-      <input type="password" name="password" placeholder="Password"/>
+      <input type="password" name="password" placeholder="Password"/><br>
       <input type="file" name="file"/><br>
       <input type="submit" value="Upload"/><br>
     </form>';
   }
-
 ?>
     <div class="root"></div>
 

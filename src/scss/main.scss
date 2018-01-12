@@ -8,18 +8,13 @@ html {
 body {
   margin: 0;
   padding: 0;
-  height: 100%;
 }
 
 .root > div {
   width: 95%;
-  margin: 2.5vh auto;
-  margin-top: 5vh;
+  margin: 5vh auto;
   max-width: 2000px;
   text-align: center;
-  &:first-child {
-    margin-top: 5vh;
-  }
   img {
     max-width: 100%;
     height: auto;
@@ -32,16 +27,28 @@ body {
   text-align: center;
   width: 95%;
   box-sizing: border-box;
-  padding: 2.5vh;
+  padding: 32px;
   margin: 5vh auto;
   position: relative;
   border: 2px solid #555;
   background-color: #333;
   color: #fefefe;
-  input {
-    font-size: 14px;
+  .close {
+    position: absolute;
+    right: 16px;
+    top: 16px;
+    width: 40px;
+    height: 40px;
+    background-image: url(data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiBlbmNvZGluZz0idXRmLTgiPz48IURPQ1RZUEUgc3ZnIFBVQkxJQyAiLS8vVzNDLy9EVEQgU1ZHIDEuMS8vRU4iICJodHRwOi8vd3d3LnczLm9yZy9HcmFwaGljcy9TVkcvMS4xL0RURC9zdmcxMS5kdGQiPjxzdmcgdmVyc2lvbj0iMS4xIiBpZD0iTGF5ZXJfMSIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIiB4bWxuczp4bGluaz0iaHR0cDovL3d3dy53My5vcmcvMTk5OS94bGluayIgeD0iMHB4IiB5PSIwcHgiICAgdmlld0JveD0iMCAwIDk2IDk2IiBlbmFibGUtYmFja2dyb3VuZD0ibmV3IDAgMCA5NiA5NiIgeG1sOnNwYWNlPSJwcmVzZXJ2ZSI+PHBvbHlnb24gZmlsbD0iI2ZmZiIgcG9pbnRzPSI5NiwxNCA4MiwwIDQ4LDM0IDE0LDAgMCwxNCAzNCw0OCAwLDgyIDE0LDk2IDQ4LDYyIDgyLDk2IDk2LDgyIDYyLDQ4ICIvPjwvc3ZnPg==);    background-repeat: no-repeat;
+    background-size: 20px 20px;
+    background-position: 50% 50%;
+    cursor: pointer;
   }
-  input[type="submit"] {
-    margin-top: 16px;
+  input {
+    margin-bottom: 16px;
+    font-size: 14px;
+    &[name="submit"] {
+      margin-bottom: 0;
+    }
   }
 }
