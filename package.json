@@ -1,0 +1,43 @@
+{
+  "name": "pikkolo",
+  "version": "1.0.0",
+  "description": "Tiny image gallery for photoblogging",
+  "main": "gulp",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "clean": "rm -f css/main.css css/main.css.map js/scripts.min.js js/scripts.min.js.map js/polyfills.js && cp -f .placeholder.js js/scripts.js",
+    "clean-env": "rm -rf ./node_modules/"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://bitbucket.org/esmes/html5-template.git"
+  },
+  "author": "@b10nik",
+  "license": "UNLICENSED",
+  "private": true,
+  "homepage": "https://sneek.co/pikkolo",
+  "devDependencies": {
+    "browserslist": "^2.1.4",
+    "del": "^2.2.2",
+    "gulp": "^3.9.1",
+    "gulp-autopolyfiller": "^1.2.1",
+    "gulp-autoprefixer": "^3.1.1",
+    "gulp-concat": "^2.6.1",
+    "gulp-filter": "^5.0.0",
+    "gulp-livereload": "^3.8.1",
+    "gulp-notify": "^3.0.0",
+    "gulp-plumber": "^1.1.0",
+    "gulp-rename": "^1.2.2",
+    "gulp-sass": "^3.1.0",
+    "gulp-sourcemaps": "^2.5.1",
+    "gulp-uglify": "^2.1.2",
+    "gulp-watch": "^4.3.11"
+  },
+  "browserslist": [
+    "> 0.05% in FI",
+    "last 2 versions",
+    "ie >= 8",
+    "Safari >= 8",
+    "iOS >= 8"
+  ]
+}

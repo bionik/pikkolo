@@ -1,0 +1,47 @@
+/*! boo! -@b10nik */
+
+html {
+  background-color: #222;
+  height: 100%;
+}
+
+body {
+  margin: 0;
+  padding: 0;
+  height: 100%;
+}
+
+.root > div {
+  width: 95%;
+  margin: 2.5vh auto;
+  margin-top: 5vh;
+  max-width: 2000px;
+  text-align: center;
+  &:first-child {
+    margin-top: 5vh;
+  }
+  img {
+    max-width: 100%;
+    height: auto;
+    max-height: 90vh;
+    box-shadow: 1px 3px 9px rgba(0,0,0,0.2);
+  }
+}
+
+#upload {
+  text-align: center;
+  width: 95%;
+  box-sizing: border-box;
+  padding: 2.5vh;
+  margin: 5vh auto;
+  position: relative;
+  border: 2px solid #555;
+  background-color: #333;
+  color: #fefefe;
+  input {
+    font-size: 14px;
+  }
+  input[type="submit"] {
+    margin-top: 16px;
+  }
+}
