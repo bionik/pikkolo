@@ -21,7 +21,6 @@ var App = function(options){
 
 
   a.init = function(){
-    if($('#upload').length) $('#upload')[0].reset();
 
     window.addEventListener('scroll', throttle(a.handleScroll, 15));
     $(window).scroll(a.handleScroll);
@@ -36,73 +35,79 @@ var App = function(options){
 
     var hash_accepted = false;
 
-    if(window.localStorage && window.localStorage.getItem('hash')){
-      $.ajax('?api', {
-        type: 'POST',
-        cache: false,
-        dataType: 'json',
-        data: {
-          a: 'checkHash',
-          hash: window.localStorage.getItem('hash')
-        },
-        success: function(data){
-          if(typeof data.status != "undefined" && data.status == "OK"){
-            hash_accepted = true;
-            $('#upload [name="password"]').hide();
+    if($('#upload').length){
+
+      $('#upload')[0].reset();
+
+      if(window.localStorage && window.localStorage.getItem('hash')){
+        $.ajax('?api', {
+          type: 'POST',
+          cache: false,
+          dataType: 'json',
+          data: {
+            a: 'checkHash',
+            hash: window.localStorage.getItem('hash')
+          },
+          success: function(data){
+            if(typeof data.status != "undefined" && data.status == "OK"){
+              hash_accepted = true;
+              $('#upload [name="password"]').hide();
+            }
+          },
+          complete: function(){
+            $('#upload').show();
           }
-        },
-        complete: function(){
-          $('#upload').show();
-        }
-      });
-    } else {
-      $('#upload').show();
-    }
-
-    $('[role="upload-close"]').on('click', function(){
-      $('#upload').fadeOut(200);
-    });
-
-    $('#upload').on('submit', function(e){
-      e.preventDefault();
-
-      $('#upload [type="submit"]').prop('disabled', true);
-
-      var formdata = new FormData();
-      formdata.append('a', 'uploadFile');
-      formdata.append('file', $('#upload [name="file"]')[0].files[0]);
-
-      if(hash_accepted){
-        formdata.append('hash', window.localStorage.getItem('hash'));
+        });
       } else {
-        formdata.append('password', $('#upload [name="password"]').val());
+        $('#upload').show();
       }
 
-      $.ajax('?api', {
-        type: 'POST',
-        cache: false,
-        data: formdata,
-        dataType: 'json',
-        processData: false,
-        contentType: false,
-        enctype: 'multipart/form-data',
-        success: function(data){
-          if(data && data.status && data.status == "OK"){
-            if(typeof window.localStorage !== "undefined" && data.hash){
-              window.localStorage.setItem('hash', data.hash);
+      $('[role="upload-close"]').on('click', function(){
+        $('#upload').fadeOut(200);
+      });
+
+      $('#upload').on('submit', function(e){
+        e.preventDefault();
+
+        $('#upload [type="submit"]').prop('disabled', true);
+
+        var formdata = new FormData();
+        formdata.append('a', 'uploadFile');
+        formdata.append('file', $('#upload [name="file"]')[0].files[0]);
+
+        if(hash_accepted){
+          formdata.append('hash', window.localStorage.getItem('hash'));
+        } else {
+          formdata.append('password', $('#upload [name="password"]').val());
+        }
+
+        $.ajax('?api', {
+          type: 'POST',
+          cache: false,
+          data: formdata,
+          dataType: 'json',
+          processData: false,
+          contentType: false,
+          enctype: 'multipart/form-data',
+          success: function(data){
+            if(data && data.status && data.status == "OK"){
+              if(typeof window.localStorage !== "undefined" && data.hash){
+                window.localStorage.setItem('hash', data.hash);
+              }
+              setTimeout(function(){ window.location.reload(); }, 50);
+            } else {
+              $('#upload [type="submit"]').prop('disabled', false);
+              alert('Upload error');
             }
-            setTimeout(function(){ window.location.reload(); }, 50);
-          } else {
+          },
+          error: function(){
             $('#upload [type="submit"]').prop('disabled', false);
             alert('Upload error');
           }
-        },
-        error: function(){
-          $('#upload [type="submit"]').prop('disabled', false);
-          alert('Upload error');
-        }
+        });
       });
-    });
+
+    }
 
   };
 
